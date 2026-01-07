@@ -4,7 +4,7 @@ WITH
 pools AS (
   -- replace with your uploaded table name if different
   SELECT DISTINCT address AS pool_addr
-  FROM dune.seaweedtao.dataset_tornado_listed_pools
+  FROM dune.tao.dataset_tornado_listed_pools
   WHERE address IS NOT NULL
 ),
 

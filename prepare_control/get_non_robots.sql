@@ -1,7 +1,7 @@
 -- Get rid of extreme values
 WITH exposed_wallets AS (
   SELECT wallet_address
-  FROM dune.sosotao.dataset_tornado_final_addresses  -- Replace with your actual table path
+  FROM dune.tao.dataset_tornado_control_addresses  -- Replace with your actual table path
 )
 
 SELECT 

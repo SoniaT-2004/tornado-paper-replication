@@ -2,11 +2,11 @@
 
 WITH low_count_wallets AS (
   SELECT TRY_CAST(wallet_address AS varbinary) AS wallet
-  FROM dune.sosotao.dataset_tornado_low_tx
+  FROM dune.tao.dataset_tornado_low_tx
 ),
 cex_list AS (
   SELECT TRY_CAST(cex_address AS varbinary) AS cex_addr
-  FROM dune.sosotao.dataset_cex_addresses
+  FROM dune.tao.dataset_cex_addresses
 ),
 
 -- 1. convert all inflows (ETH + any ERC-20) to USD equivalent

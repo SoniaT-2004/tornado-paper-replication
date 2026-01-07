@@ -36,3 +36,4 @@ Prepare panels
 - merge_fee_tx.R --> get full panel with gas fee
 
 Analysis (plots, summary stats, regressions)
+- mixer_trend.R

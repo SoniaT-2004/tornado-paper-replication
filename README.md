@@ -16,6 +16,7 @@ Prepare treated
 - Get_non_robots.sql
 - Get_mixer_interaction_count.sql
 - Clean_date.R
+
 Prepare control (same logic and step, but some R replaced with sql)
 - Get_mixer_users.sql
 - Get_untransferred_to_cex.sql
@@ -28,5 +29,6 @@ Prepare control (same logic and step, but some R replaced with sql)
 - Get_non_robots.sql
 - Get_mixer_interaction_count.sql
 - Clean_nonexposed.R
+
 Prepare panels
 Run regressions

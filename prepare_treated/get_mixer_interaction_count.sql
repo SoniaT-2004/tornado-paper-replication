@@ -6,12 +6,12 @@
 
 WITH tools AS (
   SELECT contract_address
-  FROM dune.sosotao.dataset_mixer_addresses
+  FROM dune.tao.dataset_mixer_addresses
 ),
 
 users AS (
   SELECT wallet_address
-  FROM dune.sosotao.dataset_tornado_final_addresses_cleaned
+  FROM dune.tao.dataset_tornado_final_addresses_cleaned
 ),
 
 -- Bimonthly calendar: 2020-01-01, 2020-03-01, ..., 2025-09-01

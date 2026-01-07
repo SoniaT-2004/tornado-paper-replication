@@ -2,7 +2,7 @@
 WITH exposed_wallets AS (
   SELECT 
     address AS wallet_address
-  FROM dune.seaweedtao.result_get_depositors  -- Replace with your actual table path
+  FROM dune.tao.result_get_depositors  -- Replace with your actual table path
 )
 
 SELECT 

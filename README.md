@@ -31,4 +31,8 @@ Prepare control (same logic and step, but some R replaced with sql)
 - Clean_nonexposed.R
 
 Prepare panels
-Run regressions
+- merge_all.R --> get full panel without gas fee
+- get_gas_fee.sql (run this for both treated and untreated)
+- merge_fee_tx.R --> get full panel with gas fee
+
+Analysis (plots, summary stats, regressions)

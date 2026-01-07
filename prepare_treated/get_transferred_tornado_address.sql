@@ -2,11 +2,11 @@
 WITH
 tornado_users AS (
   SELECT DISTINCT wallet_address AS address
-  FROM dune.seaweedtao.dataset_tornado_exposed_addresses
+  FROM dune.tao.dataset_tornado_exposed_addresses
 ),
 cex AS (
   SELECT DISTINCT cex_address AS cex_addr, cex_name
-  FROM dune.seaweedtao.dataset_cex_addresses
+  FROM dune.tao.dataset_cex_addresses
 ),
 hits AS (
   SELECT

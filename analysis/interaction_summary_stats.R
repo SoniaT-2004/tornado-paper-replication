@@ -5,13 +5,9 @@ library(ggplot2)
 library(readr)
 library(kableExtra)
 library(scales)
-library(gt) 
-df <- read_csv("/Users/soniatao/Desktop/Tornado/nov19/full_panel_nov19.csv")
-# df <- read_csv("/Users/soniatao/Desktop/Tornado/tornado_control_mxier_tx_cleaned.csv")
-# df <- read_csv("/Users/soniatao/Desktop/Tornado/treated/tornado_exposed_mxier_tx_cleaned.csv")
-# df <- read_csv("/Users/soniatao/Desktop/Tornado/exposed_new_cleaned.csv")
-# df <- read_csv("/Users/soniatao/Desktop/Tornado/nonexposed_new_cleaned.csv")
+library(gt)
 
+df <- read_csv("/Users/soniatao/Desktop/Tornado/nov19/full_panel.csv") # replace with your path
 summary_stats <- df %>%
   summarise(
     `Total Observations`     = n(),
@@ -32,8 +28,6 @@ summary_stats %>%
   kable(caption = "Summary Statistics (Full Panel)") %>%
   kable_styling(full_width = FALSE)
 
-
-
 # get trend and plot
 trend_bimonth <- df %>%
   group_by(bimonth) %>%
@@ -47,10 +41,8 @@ trend_bimonth <- df %>%
     avg_per_active_user = total_interactions / n_users_active
   )
 
-# 查看表格
 trend_bimonth %>% kable() %>% kable_styling()
 
-# 主图：总交互次数随时间变化
 p1 <- ggplot(trend_bimonth, aes(x = bimonth)) +
   geom_line(aes(y = total_interactions), color = "steelblue", size = 1) +
   geom_point(aes(y = total_interactions), color = "steelblue") +
@@ -66,5 +58,4 @@ p1 <- ggplot(trend_bimonth, aes(x = bimonth)) +
   ) +
   theme_minimal(base_size = 12) +
   theme(plot.title = element_text(face = "bold"))
-
 print(p1)

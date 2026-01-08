@@ -7,29 +7,29 @@ This repo provides the code to replicate the dataset and the regression output i
 
 # Work flow
 Prepare treated
-- Get_tornado_depositors.sql
-- Get_transferred_tornado_address.sql
-- Get_high_tx.sql
-- Get_low_tx.R
-- Get_source_wallets.sql
-- Get_high_tx.sql
+- get_tornado_depositors.sql
+- get_transferred_tornado_address.sql
+- get_high_tx.sql
+- get_low_tx.R
+- get_source_wallets.sql
+- get_high_tx.sql
 - merge_useful_tx.R
-- Get_non_robots.sql
-- Get_mixer_interaction_count.sql
-- Clean_date.R
+- get_non_robots.sql
+- get_mixer_interaction_count.sql
+- clean_date.R
 
 Prepare control (same logic and step, but some R replaced with sql)
-- Get_mixer_users.sql
-- Get_untransferred_to_cex.sql
-- Get_high_tx.sql
-- Get_low_tx.sql
-- Get_source_wallets.sql
-- Get_high_control.sql
-- Get_low_source_control.sql
+- get_mixer_users.sql
+- get_untransferred_to_cex.sql
+- get_high_tx.sql
+- get_low_tx.sql
+- get_source_wallets.sql
+- get_high_control.sql
+- get_low_source_control.sql
 - merge_control.R
-- Get_non_robots.sql
-- Get_mixer_interaction_count.sql
-- Clean_nonexposed.R
+- get_non_robots.sql
+- get_mixer_interaction_count.sql
+- clean_nonexposed.R
 
 Prepare panels
 - merge_all.R: get full panel without gas fee

@@ -1,15 +1,13 @@
-# Load libraries
 library(tidyverse)
 library(lubridate)
 library(broom)
 
-# prepare
-df1 <- read_csv("/Users/soniatao/Desktop/Tornado/mixers/mixer_history_old/0xTIP_history.csv")
-df2 <- read_csv("/Users/soniatao/Desktop/Tornado/mixers/mixer_history_old/cyclone_history.csv")
-df3 <- read_csv("/Users/soniatao/Desktop/Tornado/mixers/mixer_history_old/aztec_history.csv")
-df4 <- read_csv("/Users/soniatao/Desktop/Tornado/mixers/mixer_history_old/messier_history.csv")
-df5 <- read_csv("/Users/soniatao/Desktop/Tornado/mixers/mixer_history_old/railgun_history.csv")
-df6 <- read_csv("/Users/soniatao/Desktop/Tornado/mixers/mixer_history_old/zksync_history.csv")
+df1 <- read_csv("/Users/soniatao/Desktop/Tornado/mixers/0xTIP_history.csv")
+df2 <- read_csv("/Users/soniatao/Desktop/Tornado/mixers/cyclone_history.csv")
+df3 <- read_csv("/Users/soniatao/Desktop/Tornado/mixers/aztec_history.csv")
+df4 <- read_csv("/Users/soniatao/Desktop/Tornado/mixers/messier_history.csv")
+df5 <- read_csv("/Users/soniatao/Desktop/Tornado/mixers/railgun_history.csv")
+df6 <- read_csv("/Users/soniatao/Desktop/Tornado/mixers/zksync_history.csv")
 
 df1 <- df1 %>% mutate(day = ymd(day)) %>% arrange(day)
 df1_daily <- df1 %>%
@@ -56,33 +54,34 @@ df6_daily <- df6 %>%
 
 sanction_date <- as.Date("2022-08-08")
 
+# 30 days movinng avg
 df1_daily <- df1_daily %>% mutate(
-    t = as.numeric(day - min(day)) + 1,             # running time index
+    t = as.numeric(day - min(day)) + 1,            # running time index
     post = if_else(day >= sanction_date, 1, 0),    # post dummy
     t_after = if_else(post == 1, t - which(day == sanction_date)[1], 0)
   ) %>% mutate(daily_tx_ma7 = zoo::rollmean(daily_tx, 30, fill = NA, align = "right"))
 df2_daily <- df2_daily %>% mutate(
-  t = as.numeric(day - min(day)) + 1,             # running time index
+  t = as.numeric(day - min(day)) + 1,            # running time index
   post = if_else(day >= sanction_date, 1, 0),    # post dummy
   t_after = if_else(post == 1, t - which(day == sanction_date)[1], 0)
 ) %>% mutate(daily_tx_ma7 = zoo::rollmean(daily_tx, 30, fill = NA, align = "right"))
 df3_daily <- df3_daily %>% mutate(
-  t = as.numeric(day - min(day)) + 1,             # running time index
+  t = as.numeric(day - min(day)) + 1,            # running time index
   post = if_else(day >= sanction_date, 1, 0),    # post dummy
   t_after = if_else(post == 1, t - which(day == sanction_date)[1], 0)
 ) %>% mutate(daily_tx_ma7 = zoo::rollmean(daily_tx, 30, fill = NA, align = "right"))
 df4_daily <- df4_daily %>% mutate(
-  t = as.numeric(day - min(day)) + 1,             # running time index
+  t = as.numeric(day - min(day)) + 1,            # running time index
   post = if_else(day >= sanction_date, 1, 0),    # post dummy
   t_after = if_else(post == 1, t - which(day == sanction_date)[1], 0)
 ) %>% mutate(daily_tx_ma7 = zoo::rollmean(daily_tx, 30, fill = NA, align = "right"))
 df5_daily <- df5_daily %>% mutate(
-  t = as.numeric(day - min(day)) + 1,             # running time index
+  t = as.numeric(day - min(day)) + 1,            # running time index
   post = if_else(day >= sanction_date, 1, 0),    # post dummy
   t_after = if_else(post == 1, t - which(day == sanction_date)[1], 0)
 ) %>% mutate(daily_tx_ma7 = zoo::rollmean(daily_tx, 30, fill = NA, align = "right"))
 df6_daily <- df6_daily %>% mutate(
-  t = as.numeric(day - min(day)) + 1,             # running time index
+  t = as.numeric(day - min(day)) + 1,            # running time index
   post = if_else(day >= sanction_date, 1, 0),    # post dummy
   t_after = if_else(post == 1, t - which(day == sanction_date)[1], 0)
 ) %>% mutate(daily_tx_ma7 = zoo::rollmean(daily_tx, 30, fill = NA, align = "right"))
@@ -109,5 +108,5 @@ ggplot(df_all_long, aes(x = day, y = daily_tx_ma7)) +
   ) +
   theme_minimal(base_size = 12) +
   theme(
-    strip.text = element_text(size = 13, face = "bold")  # facet panel titles
+    strip.text = element_text(size = 13, face = "bold")
   )

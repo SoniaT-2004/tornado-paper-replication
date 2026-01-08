@@ -3,6 +3,7 @@ This repo provides the code to replicate the dataset and the regression output i
 
 # What’s used
 - Dune sql query, python, R, Etherscan
+- API key needed
 - Check the two python scripts in dune_csv_download_helper file for scraping datasets from Dune
 - Mixer and CEX addresses come from Etherscan
 - Tornado listed pools retrieved from OFAC Cyber-related Designation: https://ofac.treasury.gov/recent-actions/20220808

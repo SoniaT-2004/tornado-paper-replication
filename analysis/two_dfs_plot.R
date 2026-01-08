@@ -7,10 +7,8 @@ library(kableExtra)
 library(scales)
 library(gt) 
 
-#df1 <- read_csv("/Users/soniatao/Desktop/Tornado/exposed_new_cleaned.csv")
-#df2 <- read_csv("/Users/soniatao/Desktop/Tornado/old/nonexposed_new_cleaned.csv")
-df1 <- read_csv("/Users/soniatao/Desktop/Tornado/nov16/tornado_exposed_mxier_tx_cleaned.csv")
-df2 <- read_csv("/Users/soniatao/Desktop/Tornado/nov16/tornado_control_mxier_tx_cleaned.csv")
+df1 <- read_csv("/Users/soniatao/Desktop/Tornado/exposed_new_cleaned.csv")
+df2 <- read_csv("/Users/soniatao/Desktop/Tornado/nonexposed_new_cleaned.csv")
 
 summary_stats1 <- df1 %>%
   summarise(
@@ -75,7 +73,6 @@ trend_bimonth2 <- df2 %>%
   mutate(
     avg_per_active_user = total_interactions / n_users_active
   )
-# 查看表格
 trend_bimonth1 %>% kable() %>% kable_styling()
 trend_bimonth2 %>% kable() %>% kable_styling()
 

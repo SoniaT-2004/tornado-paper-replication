@@ -47,3 +47,6 @@ Analysis (plots, summary stats, regressions)
 - DiD_with_gas.R: summary stats, regression, and event study for the full panel with gas fee included
 - interaction_summary.R: plot sampled users' total interactions with mixers over time
 - two_dfs_plot.R: compare treated and untreated users interaction counts with mixers
+
+# Contact
+soniamm.tao@mail.utoronto.ca

@@ -32,9 +32,9 @@ Prepare control (same logic and step, but some R replaced with sql)
 - Clean_nonexposed.R
 
 Prepare panels
-- merge_all.R --> get full panel without gas fee
+- merge_all.R: get full panel without gas fee
 - get_gas_fee.sql (run this for both treated and untreated)
-- merge_fee_tx.R --> get full panel with gas fee
+- merge_fee_tx.R: get full panel with gas fee
 
 Analysis (plots, summary stats, regressions)
 - mixer_trend.R (input retrieved using join_mixer_history.py or individual mixer history): used to draw activity trend of any single mixer or the sixe mixers combined

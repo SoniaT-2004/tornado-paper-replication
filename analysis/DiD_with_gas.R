@@ -1,13 +1,13 @@
 library(dplyr)
 library(readr)
 library(lubridate)
-library(fixest)      # TWFE + clustered se
+library(fixest)
 library(ggplot2)
 library(kableExtra)
 library(car)
 library(broom)
 
-panel <- read_csv("/Users/soniatao/Desktop/Tornado/nov16/panel_with_fee_nov16.csv")
+panel <- read_csv("/Users/soniatao/Desktop/Tornado/panel_with_fee.csv") # replace with your path for the full merged panel with gas fee
 
 df <- panel %>%
   group_by(user_wallet) %>%
@@ -20,7 +20,6 @@ m1 <- feols(
   data = df,
   cluster = ~ user_wallet
 )
-
 summary(m1)
 
 m2 <- feols(
@@ -28,9 +27,7 @@ m2 <- feols(
   data = df,
   cluster = ~ user_wallet
 )
-
 summary(m2)
-
 
 # create relative time（use one period pre sanction as basis）
 df_event <- df %>%
@@ -41,7 +38,6 @@ df_event <- df %>%
   ) %>%
   filter(!is.na(rel_time)) %>%
   filter(rel_time >= -6)
-
 
 # check parallel trend assumption
 model <- feols(

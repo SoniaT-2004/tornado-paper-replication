@@ -1,20 +1,16 @@
 library(dplyr)
 library(readr)
 library(lubridate)
-library(fixest)      # TWFE + clustered se
+library(fixest)
 library(ggplot2)
 library(kableExtra)
 library(car)
 library(broom)
 
-panel <- read_csv("/Users/soniatao/Desktop/Tornado/nov16/merged_panel_with_fee.csv")
+panel <- read_csv("/Users/soniatao/Desktop/Tornado/merged_panel.csv") # replace with your own path for the full panel
 
 df <- panel %>%
   group_by(user_wallet) %>%
-  filter(
-    sum(num_interactions[post == 0]) > 0,
-    sum(num_interactions[post == 1]) > 0
-  ) %>%
   mutate( did  = treated * post,
           log_interactions = log(num_interactions+1)) %>%
   ungroup()
@@ -37,7 +33,6 @@ df_event <- df %>%
   filter(!is.na(rel_time)) %>%
   filter(rel_time >= -6)
 
-
 # check parallel trend assumption
 model <- feols(
   log_interactions ~ i(rel_time, treated, ref = -1) | user_wallet + bimonth,
@@ -54,7 +49,6 @@ iplot(
 )
 abline(v = 0, lty = 2, col = "black")
 
-
 # check parallel trend assumption
 pre_lags <- paste0("rel_time::", -5:-2, ":treated")
 joint_test <- linearHypothesis(
@@ -62,20 +56,10 @@ joint_test <- linearHypothesis(
   hypothesis.matrix = pre_lags,   # vector of names
   vcov. = vcov(model, cluster = "user_wallet")   # same clustering as model
 )
-
 print(joint_test)
 
 pre_lags_robust <- paste0("rel_time::", -6:-2, ":treated")
 linearHypothesis(model, pre_lags_robust)
-
-
-
-
-
-
-
-
-
 
 library(ggfixest)
 

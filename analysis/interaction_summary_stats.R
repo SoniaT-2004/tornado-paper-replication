@@ -7,7 +7,7 @@ library(kableExtra)
 library(scales)
 library(gt)
 
-df <- read_csv("/Users/soniatao/Desktop/Tornado/nov19/full_panel.csv") # replace with your path
+df <- read_csv("/Users/soniatao/Desktop/Tornado/full_panel.csv") # replace with your path
 summary_stats <- df %>%
   summarise(
     `Total Observations`     = n(),
@@ -51,8 +51,7 @@ p1 <- ggplot(trend_bimonth, aes(x = bimonth)) +
   annotate("text", x = as.Date("2022-08-08"), y = max(trend_bimonth$total_interactions)*0.9,
            label = "TC Sanction", color = "red", angle = 90, vjust = -0.5) +
   labs(
-    # title = "Total Interactions with Mixers (Bi-monthly)",
-    # subtitle = "Treated Users",
+    title = "Total Interactions with Mixers (Bi-monthly)",
     x = "Bi-month", y = "Total #Interactions",
     caption = "Vertical line: OFAC sanctions on Tornado Cash (2022-08-08)"
   ) +

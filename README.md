@@ -1,5 +1,5 @@
 # tornado-paper-replication
-This repo provides the code to replicate the dataset and the regression output in the paper Disrupting Illicit Crypto Flows: The Effects of the Tornado Cash Sanctions on User Behavior and Protocol Activity
+This repo provides the code to replicate the dataset and the regression output in the paper Disrupting Illicit Crypto Flows: The Effects of the Tornado Cash Sanctions on User Behavior and Protocol Activity (https://www.dropbox.com/scl/fi/pk5ev4pzg2yxadlhkrss1/Disrupting_Illicit_Crypto_Flows.pdf?rlkey=92vhmgd2ku3o4f61v0iexi7c5&st=gi9oyjno&dl=0)
 
 # What’s used
 - Dune sql query, python, R, Etherscan
